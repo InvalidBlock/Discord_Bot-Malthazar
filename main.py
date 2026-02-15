@@ -9,9 +9,17 @@ import os
 from dotenv import load_dotenv
 
 load_dotenv()
+
+# Pegar os valores do .env
 TOKEN = os.getenv("DISCORD_TOKEN")
+# Se não for encontrado o token retorne erro
 if TOKEN is None:
     raise ValueError("Token não encontrado no .env")
+
+GUILD_ID = os.getenv("GUILD_ID")
+# Se não for encontrado o id da guilda retorne erro
+if GUILD_ID is None:
+    raise ValueError("A ID da guilda não foi encontrado no .env") 
 
 # Importar biblioteca para Discord
 import discord
@@ -48,8 +56,7 @@ class malthazar(discord.Client):
 # Definir a instância do bot
 bot = malthazar()
 
-# Definir a Guild
-GUILD_ID = 1379932351987191910
+# Definir o que é guilda
 guild = discord.Object(id=GUILD_ID)
 
 # Comandos de dados
